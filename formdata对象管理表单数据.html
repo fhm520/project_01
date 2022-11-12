@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //新建formdata对象
+        var fd = new FormData()
+        //调用append函数，添加数据
+        fd.append('uname', 'zs')
+        fd.append('age', 34)
+        //创建xmlhttprequest对象
+        var xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://www.liulongbin.top:3006/api/formdata')
+        xhr.send(fd)
+        //监听
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === 4 && xhr.status === 200) {
+                //返回的值时字符串，需转换成对象json.parse()
+                console.log(JSON.parse(xhr.responseText));
+            }
+
+        }
+    </script>
+</body>
+</html>
